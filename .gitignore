@@ -1,0 +1,11 @@
+/shared
+/sql-dump-*.sql
+/adminer*
+/db-sync
+/content/upgrade/
+.settings
+*.aptana.*
+.project
+.svn
+*.svn
+.DS_Store
