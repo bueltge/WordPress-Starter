@@ -36,7 +36,7 @@ define( 'WP_PROXY_BYPASS_HOSTS', 'localhost' );
 //define( 'FTP_PASS', 'password123' );
 /**/
 
-/*
+//*
 // MySQL settings
 define( 'DB_NAME', 'wpbeta' );
 define( 'DB_USER', 'root' );
