@@ -2,7 +2,7 @@
 This is simple starter skeleton repo for a WordPress developer site - reduce the `wp-config.php` for live sites.
 
 ## Description
-* `wpbeta` as default name for the wp-directory; why i ise the last nightly build for development
+* `wpbeta` as default name for the wp-directory; why i use the last nightly build for development
 * WordPress as a Git submodule in `/wpbeta/`
 * Custom content directory in `/wp-content/`
 * Custom plugin directory in `/wp-plugins/`
