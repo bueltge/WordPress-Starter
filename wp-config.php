@@ -61,7 +61,7 @@ define( 'WPMU_PLUGIN_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wpmu-plugins' )
 // Set memory limit
 define( 'WP_MEMORY_LIMIT', '128M' );
 
-// Save queries for read adn optimize
+// Save queries for read and optimize
 define( 'SAVEQUERIES', TRUE );
 
 // Set revisions
