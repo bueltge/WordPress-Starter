@@ -407,3 +407,52 @@ Options -MultiViews
   Satisfy All
 </FilesMatch>
 
+# ----------------------------------------------------------------------
+# WordPress features
+# ----------------------------------------------------------------------
+
+# forbid double slashes in all URLs
+<Ifmodule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{THE_REQUEST} ^[A-Z]+\ /(([^/\ ]+/)*)/+([^\ ]*)
+  RewriteRule ^ /%1%3 [L,R=301]
+</Ifmodule>
+
+# ----------------------------------------------------------------------
+# Little more security in WP
+# ----------------------------------------------------------------------
+# PROTECT all htaccess files
+<Files ~ "^[\._]ht">
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</Files>
+
+# PROTECT wp-config.php
+<files wp-config.php>
+ Order deny,allow
+ deny from all
+</files>
+
+# PROTECT wp-login.php
+<files wp-login.php>
+ AuthName "Admin-Bereich"
+ AuthType Basic
+ AuthUserFile /www/htdocs/w0079121/.htpasswd
+ require valid-user
+</files>
+
+# PROTECT readme.html
+<Files readme.html>
+ Order Allow,Deny
+ Deny from all
+ Satisfy all
+</Files>
+
+# PROTECT install.php
+<Files install.php>
+ Order Allow,Deny
+ Deny from all
+ Satisfy all
+</Files>
