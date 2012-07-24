@@ -1,0 +1,26 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+/* TEAM */
+	company: John Goe Agency
+	Site: http://example.com
+	Twitter: example
+	Location: Germany
+	
+	shareholder: Frank Bueltge
+	Site: http://bueltge.de
+	Twitter: bueltge
+	Location: Stadtroda, Germany
+	
+	employee: Max Mustermann
+	Site: http://bueltge.github.com
+	Twitter: 
+	Location: Spain
+
+/* THANKS */
+	To our great employee
+
+/* SITE */
+	Standards: HTML5, CSS3
+	Components: html5shim, jQuery
+	Software: Apache, PHP, WordPress and much more
