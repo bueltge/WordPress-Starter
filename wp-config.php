@@ -7,7 +7,8 @@
 
 define( 'WP_DEBUG', TRUE );
 define( 'WP_DEBUG_DISPLAY', TRUE ); 
-define( 'WP_DEBUG_LOG', '/logs' );
+define( 'WP_DEBUG_LOG', TRUE ); // leave teh debug file in WP_CONTENT_DIR . '/debug.log'
+
 // Debug JS, When this is defined and set to TRUE the non-minified versions of the Javascripts will be used.
 define( 'SCRIPT_DEBUG', TRUE );
 /**/
