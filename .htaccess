@@ -1,8 +1,6 @@
-
 # ----------------------------------------------------------------------
 # BEGIN WordPress
 # ----------------------------------------------------------------------
-
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -15,7 +13,6 @@
 # ----------------------------------------------------------------------
 # UTF-8 encoding
 # ----------------------------------------------------------------------
-
 # Use UTF-8 encoding for anything served text/plain or text/html
 AddDefaultCharset utf-8
 
@@ -33,7 +30,7 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
   Header set X-UA-Compatible "IE=Edge,chrome=1"
   # mod_headers can't match by content-type, but we don't want to send this header on *everything*...
   <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
-	Header unset X-UA-Compatible
+  Header unset X-UA-Compatible
   </FilesMatch>
 </IfModule>
 
@@ -45,7 +42,7 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 # enable-cors.org
 # code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
 #  <IfModule mod_headers.c>
-#	Header set Access-Control-Allow-Origin "*"
+#  Header set Access-Control-Allow-Origin "*"
 #  </IfModule>
 
 
@@ -59,11 +56,11 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 # wiki.mozilla.org/Security/Reviews/crossoriginAttribute
 <IfModule mod_setenvif.c>
   <IfModule mod_headers.c>
-	# mod_headers, y u no match by Content-Type?!
-	<FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp)$">
-	  SetEnvIf Origin ":" IS_CORS
-	  Header set Access-Control-Allow-Origin "*" env=IS_CORS
-	</FilesMatch>
+  # mod_headers, y u no match by Content-Type?!
+  <FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp)$">
+    SetEnvIf Origin ":" IS_CORS
+    Header set Access-Control-Allow-Origin "*" env=IS_CORS
+  </FilesMatch>
   </IfModule>
 </IfModule>
 
@@ -76,7 +73,7 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 # subdomains like "subdomain.example.com".
 <IfModule mod_headers.c>
   <FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
-	Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Origin "*"
   </FilesMatch>
 </IfModule>
 
@@ -88,126 +85,126 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 # JavaScript
 #   Normalize to standard type (it's sniffed in IE anyways)
 #   tools.ietf.org/html/rfc4329#section-7.2
-AddType application/javascript			js jsonp
-AddType application/json				json
+AddType application/javascript      js jsonp
+AddType application/json        json
 
 # Audio
-AddType audio/ogg						oga ogg
-AddType audio/mp4						m4a f4a f4b
+AddType audio/ogg            oga ogg
+AddType audio/mp4            m4a f4a f4b
 
 # Video
-AddType video/ogg						ogv
-AddType video/mp4						mp4 m4v f4v f4p 
-AddType video/webm						webm
-AddType video/x-flv						flv
+AddType video/ogg            ogv
+AddType video/mp4            mp4 m4v f4v f4p 
+AddType video/webm            webm
+AddType video/x-flv            flv
 
 # SVG
 #   Required for svg webfonts on iPad
 #   twitter.com/FontSquirrel/status/14855840545
-AddType	 image/svg+xml					svg svgz
-AddEncoding gzip						svgz
+AddType   image/svg+xml          svg svgz
+AddEncoding gzip            svgz
 
 # Webfonts
-AddType application/vnd.ms-fontobject	eot
-AddType application/x-font-ttf			ttf ttc
-AddType font/opentype					otf
-AddType application/x-font-woff			woff
-AddType image/svg+xml					svg
+AddType application/vnd.ms-fontobject  eot
+AddType application/x-font-ttf      ttf ttc
+AddType font/opentype          otf
+AddType application/x-font-woff      woff
+AddType image/svg+xml          svg
 
 # Assorted types
-AddType image/x-icon						ico
-AddType image/webp							webp
-AddType text/cache-manifest					appcache manifest
-AddType text/x-component					htc
-AddType application/xml						rss atom xml rdf
-AddType application/x-chrome-extension		crx
-AddType application/x-opera-extension		oex
-AddType application/x-xpinstall				xpi
-AddType application/octet-stream			safariextz
-AddType application/x-web-app-manifest+json	webapp
-AddType text/x-vcard						vcf
-AddType application/x-shockwave-flash		swf
+AddType image/x-icon            ico
+AddType image/webp              webp
+AddType text/cache-manifest          appcache manifest
+AddType text/x-component          htc
+AddType application/xml            rss atom xml rdf
+AddType application/x-chrome-extension    crx
+AddType application/x-opera-extension    oex
+AddType application/x-xpinstall        xpi
+AddType application/octet-stream      safariextz
+AddType application/x-web-app-manifest+json  webapp
+AddType text/x-vcard            vcf
+AddType application/x-shockwave-flash    swf
 
 
 # ----------------------------------------------------------------------
 # Gzip compression
 # ----------------------------------------------------------------------
 <IfModule mod_deflate.c>
-	# Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
-	<IfModule mod_setenvif.c>
-		<IfModule mod_headers.c>
-			SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
-			RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
-		</IfModule>
-	</IfModule>
+  # Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+  <IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+      SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+      RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+    </IfModule>
+  </IfModule>
 
-	# HTML, TXT, CSS, JavaScript, JSON, XML, HTC:
-	<IfModule filter_module>
-		FilterDeclare   COMPRESS
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/html
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/css
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/plain
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/xml
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/x-component
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/javascript
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/json
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xml
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xhtml+xml
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/rss+xml
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/atom+xml
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/vnd.ms-fontobject
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/svg+xml
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/x-icon
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/x-font-ttf
-		FilterProvider  COMPRESS  DEFLATE resp=Content-Type $font/opentype
-		FilterChain	 COMPRESS
-		FilterProtocol  COMPRESS  DEFLATE change=yes;byteranges=no
-	</IfModule>
+  # HTML, TXT, CSS, JavaScript, JSON, XML, HTC:
+  <IfModule filter_module>
+    FilterDeclare   COMPRESS
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/html
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/css
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/plain
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/xml
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/x-component
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/javascript
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/json
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xml
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xhtml+xml
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/rss+xml
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/atom+xml
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/vnd.ms-fontobject
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/svg+xml
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/x-icon
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/x-font-ttf
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type $font/opentype
+    FilterChain   COMPRESS
+    FilterProtocol  COMPRESS  DEFLATE change=yes;byteranges=no
+  </IfModule>
 
-	<IfModule !mod_filter.c>
-		# Legacy versions of Apache
-		AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
-		AddOutputFilterByType DEFLATE application/javascript
-		AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
-		AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
-		AddOutputFilterByType DEFLATE image/x-icon image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
+  <IfModule !mod_filter.c>
+    # Legacy versions of Apache
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
+    AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
+    AddOutputFilterByType DEFLATE image/x-icon image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
 
-		AddOutputFilter DEFLATE application/atom+xml
-		AddOutputFilter DEFLATE application/json
-		AddOutputFilter DEFLATE application/xhtml+xml
-		AddOutputFilter DEFLATE application/xml
-		AddOutputFilter DEFLATE text/css
-		AddOutputFilter DEFLATE text/html
-		AddOutputFilter DEFLATE text/plain
-		AddOutputFilter DEFLATE text/x-component
-		AddOutputFilter DEFLATE text/xml
+    AddOutputFilter DEFLATE application/atom+xml
+    AddOutputFilter DEFLATE application/json
+    AddOutputFilter DEFLATE application/xhtml+xml
+    AddOutputFilter DEFLATE application/xml
+    AddOutputFilter DEFLATE text/css
+    AddOutputFilter DEFLATE text/html
+    AddOutputFilter DEFLATE text/plain
+    AddOutputFilter DEFLATE text/x-component
+    AddOutputFilter DEFLATE text/xml
 
-		# The following MIME types are in the process of registration
-		AddOutputFilter DEFLATE application/xslt+xml
-		AddOutputFilter DEFLATE image/svg+xml
+    # The following MIME types are in the process of registration
+    AddOutputFilter DEFLATE application/xslt+xml
+    AddOutputFilter DEFLATE image/svg+xml
 
-		# The following MIME types are NOT registered
-		AddOutputFilter DEFLATE application/mathml+xml
-		AddOutputFilter DEFLATE application/rss+xml
+    # The following MIME types are NOT registered
+    AddOutputFilter DEFLATE application/mathml+xml
+    AddOutputFilter DEFLATE application/rss+xml
 
-		# JavaScript has various MIME types
-		AddOutputFilter DEFLATE application/javascript
-		AddOutputFilter DEFLATE application/x-javascript
-		AddOutputFilter DEFLATE text/ecmascript
-		AddOutputFilter DEFLATE text/javascript
+    # JavaScript has various MIME types
+    AddOutputFilter DEFLATE application/javascript
+    AddOutputFilter DEFLATE application/x-javascript
+    AddOutputFilter DEFLATE text/ecmascript
+    AddOutputFilter DEFLATE text/javascript
 
-		# .ico files and other compressible images
-		AddOutputFilter DEFLATE image/vnd.microsoft.icon
-		AddOutputFilter DEFLATE image/x-icon
-		AddOutputFilter DEFLATE image/bmp
-		AddOutputFilter DEFLATE image/tiff
-		AddOutputFilter DEFLATE application/pdf
+    # .ico files and other compressible images
+    AddOutputFilter DEFLATE image/vnd.microsoft.icon
+    AddOutputFilter DEFLATE image/x-icon
+    AddOutputFilter DEFLATE image/bmp
+    AddOutputFilter DEFLATE image/tiff
+    AddOutputFilter DEFLATE application/pdf
 
-		# compressible fonts (.woff is already compressed)
-		AddOutputFilter DEFLATE font/opentype
-		AddOutputFilter DEFLATE application/x-font-ttf font/ttf font/otf image/svg+xml
-		AddOutputFilter DEFLATE application/vnd.ms-fontobject
-	</IfModule>
+    # compressible fonts (.woff is already compressed)
+    AddOutputFilter DEFLATE font/opentype
+    AddOutputFilter DEFLATE application/x-font-ttf font/ttf font/otf image/svg+xml
+    AddOutputFilter DEFLATE application/vnd.ms-fontobject
+  </IfModule>
 </IfModule>
 
 
@@ -221,56 +218,56 @@ AddType application/x-shockwave-flash		swf
 # If you don't use filenames to version, lower the CSS  and JS to something like
 #   "access plus 1 week" or so.
 <IfModule mod_expires.c>
-	ExpiresActive on
+  ExpiresActive on
 
-	<FilesMatch ".(jpg|png|gif)$">
-		ExpiresDefault A0
-		Header set Cache-Control "max-age=0,  no-cache, must-revalidate"
-	</FilesMatch>
+  <FilesMatch ".(jpg|png|gif)$">
+    ExpiresDefault A0
+    Header set Cache-Control "max-age=0,  no-cache, must-revalidate"
+  </FilesMatch>
 
-	# Perhaps better to whitelist expires rules? Perhaps.
-	ExpiresDefault								"access plus 1 year"
+  # Perhaps better to whitelist expires rules? Perhaps.
+  ExpiresDefault                "access plus 1 year"
 
-	# cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
-	ExpiresByType text/cache-manifest			"access plus 0 seconds"
+  # cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
+  ExpiresByType text/cache-manifest      "access plus 0 seconds"
 
-	ExpiresByType application/json				"access plus 1 year"
-	ExpiresByType application/pdf				"access plus 1 year"
-	ExpiresByType application/x-shockwave-flash	"access plus 1 year"
-	ExpiresByType image/bmp 					"access plus 1 year"
-	ExpiresByType image/gif 					"access plus 1 year"
-	ExpiresByType image/jpeg 					"access plus 1 year"
-	ExpiresByType image/png 					"access plus 1 year"
-	ExpiresByType image/svg+xml 				"access plus 1 year"
-	ExpiresByType image/tiff 					"access plus 1 year"
-	ExpiresByType image/vnd.microsoft.icon 		"access plus 1 year"
-	ExpiresByType image/x-icon					"access plus 1 year"
-	ExpiresByType text/css 						"access plus 1 year"
-	ExpiresByType video/x-flv 					"access plus 1 year"
-	ExpiresByType application/vnd.bw-fontobject	"access plus 1 year"
-	ExpiresByType application/x-font-ttf		"access plus 1 year"
-	ExpiresByType application/font-woff			"access plus 1 year"
-	ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
-	ExpiresByType font/ttf						"access plus 1 year"
-	ExpiresByType font/otf						"access plus 1 year"
-	ExpiresByType font/x-woff					"access plus 1 year"
-	ExpiresByType image/svg+xml					"access plus 1 year"
-	ExpiresByType font/opentype					"access plus 1 year"
-	ExpiresByType image/webp					"access plus 1 year"
+  ExpiresByType application/json        "access plus 1 year"
+  ExpiresByType application/pdf        "access plus 1 year"
+  ExpiresByType application/x-shockwave-flash  "access plus 1 year"
+  ExpiresByType image/bmp           "access plus 1 year"
+  ExpiresByType image/gif           "access plus 1 year"
+  ExpiresByType image/jpeg           "access plus 1 year"
+  ExpiresByType image/png           "access plus 1 year"
+  ExpiresByType image/svg+xml         "access plus 1 year"
+  ExpiresByType image/tiff           "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon     "access plus 1 year"
+  ExpiresByType image/x-icon          "access plus 1 year"
+  ExpiresByType text/css             "access plus 1 year"
+  ExpiresByType video/x-flv           "access plus 1 year"
+  ExpiresByType application/vnd.bw-fontobject  "access plus 1 year"
+  ExpiresByType application/x-font-ttf    "access plus 1 year"
+  ExpiresByType application/font-woff      "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  ExpiresByType font/ttf            "access plus 1 year"
+  ExpiresByType font/otf            "access plus 1 year"
+  ExpiresByType font/x-woff          "access plus 1 year"
+  ExpiresByType image/svg+xml          "access plus 1 year"
+  ExpiresByType font/opentype          "access plus 1 year"
+  ExpiresByType image/webp          "access plus 1 year"
 
-	# The following MIME types are in the process of registration
-	ExpiresByType application/xslt+xml			"access plus 1 year"
-	ExpiresByType image/svg+xml					"access plus 1 year"
+  # The following MIME types are in the process of registration
+  ExpiresByType application/xslt+xml      "access plus 1 year"
+  ExpiresByType image/svg+xml          "access plus 1 year"
 
-	# The following MIME types are NOT registered
-	ExpiresByType application/mathml+xml		"access plus 1 year"
-	ExpiresByType application/rss+xml		"access plus 1 year"
+  # The following MIME types are NOT registered
+  ExpiresByType application/mathml+xml    "access plus 1 year"
+  ExpiresByType application/rss+xml    "access plus 1 year"
 
-	# JavaScript has various MIME types
-	ExpiresByType application/x-javascript 		"access plus 1 year"
-	ExpiresByType application/javascript 		"access plus 1 year"
-	ExpiresByType text/ecmascript 			"access plus 1 year"
-	ExpiresByType text/javascript 			"access plus 1 year"
+  # JavaScript has various MIME types
+  ExpiresByType application/x-javascript     "access plus 1 year"
+  ExpiresByType application/javascript     "access plus 1 year"
+  ExpiresByType text/ecmascript       "access plus 1 year"
+  ExpiresByType text/javascript       "access plus 1 year"
 </IfModule>
 
 
@@ -310,7 +307,7 @@ SetEnvIf brokenvary 1 force-no-vary
 # Be aware of possible disadvantages of this setting. Turn on if you serve a lot of
 # static content.
 <IfModule mod_headers.c>
-	Header set Connection Keep-Alive
+  Header set Connection Keep-Alive
 </IfModule>
 
 
@@ -348,9 +345,9 @@ SetEnvIf brokenvary 1 force-no-vary
 # To understand why this is important and a better idea than all.css?v1231,
 # read: github.com/h5bp/html5-boilerplate/wiki/cachebusting
 <IfModule mod_rewrite.c>
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
 </IfModule>
 
 
@@ -420,39 +417,41 @@ Options -MultiViews
 </Ifmodule>
 
 # ----------------------------------------------------------------------
-# Little more security in WP
+# Little more security in WP and htaccess protection
 # ----------------------------------------------------------------------
 # PROTECT all htaccess files
 <Files ~ "^[\._]ht">
- Order allow,deny
- Deny from all
- Satisfy All
+  Order Allow,Deny
+  Deny from all
+  Satisfy All
 </Files>
 
 # PROTECT wp-config.php
 <files wp-config.php>
- Order deny,allow
- deny from all
+  Order Allow,Deny
+  Deny from all
+  Satisfy all
 </files>
 
 # PROTECT wp-login.php
-<files wp-login.php>
- AuthName "Admin-Bereich"
- AuthType Basic
- AuthUserFile /www/htdocs/w0079121/.htpasswd
- require valid-user
-</files>
+#<files wp-login.php>
+#  AuthName "Admin-Bereich"
+#  AuthType Basic
+#  AuthUserFile /www/htdocs/absolute_path/.htusers
+#  require valid-user
+#</files>
 
 # PROTECT readme.html
 <Files readme.html>
- Order Allow,Deny
- Deny from all
- Satisfy all
+  Order Allow,Deny
+  Deny from all
+  Satisfy all
 </Files>
 
 # PROTECT install.php
+# Unkomment or change to 'Allow from all' for install of WordPress
 <Files install.php>
- Order Allow,Deny
- Deny from all
- Satisfy all
+  Order Allow,Deny
+  Deny from all
+  Satisfy all
 </Files>

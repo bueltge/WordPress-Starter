@@ -1,0 +1,9 @@
+# ----------------------------------------------------------------------
+# htaccess protection, the users for access
+# ----------------------------------------------------------------------
+# 
+# Use http://bueltge.de/md5/ for get the password in md5 key
+# List user:password
+bueltge:asdfg123
+maxmustermann:0123456789
+johndoe:passwordinmd5
