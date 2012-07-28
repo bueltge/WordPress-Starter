@@ -61,6 +61,11 @@ define( 'WPMU_PLUGIN_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wpmu-plugins' )
 
 // Set memory limit
 define( 'WP_MEMORY_LIMIT', '128M' );
+if (
+	function_exists('memory_get_usage') &&
+	( (int) @ini_get('memory_limit') < abs( (int) WP_MEMORY_LIMIT ) )
+	)
+	@ini_set('memory_limit', WP_MEMORY_LIMIT);
 
 // Save queries for read and optimize
 define( 'SAVEQUERIES', TRUE );
