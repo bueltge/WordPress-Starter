@@ -3,7 +3,7 @@
 // For Debug purpose
 @ini_set( 'log_errors', 'On' );
 @ini_set( 'display_errors', 'On' );
-@ini_set( 'error_log', 'http://' . $_SERVER['HTTP_HOST'] . '/logs/php_errors.' . date( 'Y-m-d' ) . '.log' );
+@ini_set( 'error_log', $_SERVER['DOCUMENT_ROOT'] . '/logs/php_errors.log' );
 
 define( 'WP_DEBUG', TRUE );
 define( 'WP_DEBUG_DISPLAY', TRUE ); 
@@ -15,7 +15,7 @@ define( 'SCRIPT_DEBUG', TRUE );
 
 /*
 // for deactivate login/logout
-function wp_validate_auth_cookie($cookie = '', $scheme = '' ) {
+function wp_validate_auth_cookie( $cookie = '', $scheme = '' ) {
 	
 	return 1;
 }
@@ -39,21 +39,21 @@ define( 'WP_PROXY_BYPASS_HOSTS', 'localhost' );
 
 //*
 // MySQL settings
-define( 'DB_NAME', 'wpbeta' );
-define( 'DB_USER', 'root' );
+define( 'DB_NAME',     'wpbeta' );
+define( 'DB_USER',     'root' );
 define( 'DB_PASSWORD', '' );
-define( 'DB_HOST', 'localhost' );
-define( 'DB_CHARSET', 'utf8' );
-define( 'DB_COLLATE', '' );
+define( 'DB_HOST',     'localhost' );
+define( 'DB_CHARSET',  'utf8' );
+define( 'DB_COLLATE',  '' );
 /**/
 
 //*
 // Custom content directory
-define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
+define( 'WP_CONTENT_DIR',  dirname( __FILE__ ) . '/wp-content' );
+define( 'WP_CONTENT_URL',  'http://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
 // Custom plugin directory
-define( 'WP_PLUGIN_DIR', dirname( __FILE__ ) . '/wp-plugins' );
-define( 'WP_PLUGIN_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-plugins' );
+define( 'WP_PLUGIN_DIR',   dirname( __FILE__ ) . '/wp-plugins' );
+define( 'WP_PLUGIN_URL',   'http://' . $_SERVER['HTTP_HOST'] . '/wp-plugins' );
 // Custom mu plugin directory
 define( 'WPMU_PLUGIN_DIR', dirname( __FILE__ ) . '/wpmu-plugins' );
 define( 'WPMU_PLUGIN_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wpmu-plugins' );
@@ -78,7 +78,7 @@ define( 'WP_POST_REVISIONS', 3 );
 
 // Compression for JS and styles
 define( 'CONCATENATE_SCRIPTS', FALSE ); // activate concantenate scripts 
-define( 'COMPRESS_SCRIPTS', FALSE ); // activate JS compression
+define( 'COMPRESS_SCRIPTS',    FALSE ); // activate JS compression
 
 // Allow Multisite
 define( 'WP_ALLOW_MULTISITE', TRUE );
