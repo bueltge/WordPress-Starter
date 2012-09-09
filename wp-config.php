@@ -70,6 +70,9 @@ if (
 // Save queries for read and optimize
 define( 'SAVEQUERIES', TRUE );
 
+// Skip wp-content when upgrading to a new WordPress version.
+define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', TRUE );
+
 // Set revisions
 define( 'WP_POST_REVISIONS', 3 );
 
