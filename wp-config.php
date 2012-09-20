@@ -1,17 +1,18 @@
 <?php
-//*
 // For Debug purpose
-@ini_set( 'log_errors', 'On' );
-@ini_set( 'display_errors', 'On' );
-@ini_set( 'error_log', $_SERVER['DOCUMENT_ROOT'] . '/logs/php_errors.log' );
-
 define( 'WP_DEBUG', TRUE );
-define( 'WP_DEBUG_DISPLAY', TRUE ); 
-define( 'WP_DEBUG_LOG', TRUE ); // leave teh debug file in WP_CONTENT_DIR . '/debug.log'
-
-// Debug JS, When this is defined and set to TRUE the non-minified versions of the Javascripts will be used.
-define( 'SCRIPT_DEBUG', TRUE );
-/**/
+if ( WP_DEBUG ) {
+	define( 'WP_DEBUG_LOG', TRUE ); // leave teh debug file in WP_CONTENT_DIR . '/debug.log'
+	define( 'WP_DEBUG_DISPLAY', TRUE );
+	
+	// Debug JS
+	// When this is defined and set to TRUE the non-minified versions of the Javascripts will be used.
+	define( 'SCRIPT_DEBUG', TRUE );
+	
+	@ini_set( 'log_errors', 'On' );
+	@ini_set( 'display_errors', 'On' );
+	@ini_set( 'error_log', $_SERVER['DOCUMENT_ROOT'] . '/logs/php_errors.log' );
+}
 
 /*
 // for deactivate login/logout
@@ -32,9 +33,9 @@ define( 'WP_PROXY_BYPASS_HOSTS', 'localhost' );
 
 /*
 // FTP Data
-//define( 'FTP_HOST', '' );
-//define( 'FTP_USER', 'username123' );
-//define( 'FTP_PASS', 'password123' );
+define( 'FTP_HOST', '' );
+define( 'FTP_USER', 'username123' );
+define( 'FTP_PASS', 'password123' );
 /**/
 
 //*
@@ -65,7 +66,7 @@ if (
 	function_exists('memory_get_usage') &&
 	( (int) @ini_get('memory_limit') < abs( (int) WP_MEMORY_LIMIT ) )
 	)
-	@ini_set('memory_limit', WP_MEMORY_LIMIT);
+	@ini_set( 'memory_limit', WP_MEMORY_LIMIT );
 
 // Save queries for read and optimize
 define( 'SAVEQUERIES', TRUE );
