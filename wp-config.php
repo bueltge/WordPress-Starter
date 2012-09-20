@@ -84,6 +84,27 @@ define( 'COMPRESS_SCRIPTS',    FALSE ); // activate JS compression
 // Allow Multisite
 define( 'WP_ALLOW_MULTISITE', TRUE );
 
+/*
+// for enabling/disabling theme/plugin editor
+define( 'DISALLOW_FILE_EDIT', TRUE );
+/**/
+
+/*
+// Disallow anything that creates, deletes, or edits core, plugin, or theme files.
+// Files in uploads are excepted.
+define( 'DISALLOW_FILE_MODS', TRUE );
+/**/
+
+/*
+// Disallow unfiltered_html for all users, even admins and super admins
+define( 'DISALLOW_UNFILTERED_HTML', TRUE );
+/**/
+
+/*
+// Allow uploads of filtered file types to users with administrator role
+define( 'ALLOW_UNFILTERED_UPLOADS', TRUE );
+/**/
+
 //*
 // Network setup
 define( 'MULTISITE',            TRUE );
