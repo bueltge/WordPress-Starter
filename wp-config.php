@@ -1,5 +1,5 @@
 <?php
-// For Debug purpose addd the url param
+// For Debug purpose add the url param: ?wp_debug=true
 if ( isset($_GET['wp_debug']) && $_GET['wp_debug'] === 'true')
 	define( 'WP_DEBUG', TRUE );
 else
