@@ -1,8 +1,12 @@
 <?php
-// For Debug purpose
-define( 'WP_DEBUG', TRUE );
+// For Debug purpose addd the url param
+if ( isset($_GET['wp_debug']) && $_GET['wp_debug'] === 'true')
+	define( 'WP_DEBUG', TRUE );
+else
+	define( 'WP_DEBUG', FALSE );
+
 if ( WP_DEBUG ) {
-	define( 'WP_DEBUG_LOG', TRUE ); // leave teh debug file in WP_CONTENT_DIR . '/debug.log'
+	define( 'WP_DEBUG_LOG', TRUE ); // leave the debug file in WP_CONTENT_DIR . '/debug.log'
 	define( 'WP_DEBUG_DISPLAY', TRUE );
 	
 	// Debug JS
