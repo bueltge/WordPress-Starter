@@ -141,6 +141,6 @@ define ( 'WPLANG', '' );
 
 // Bootstrap WordPress
 if ( ! defined( 'ABSPATH' ) )
-	define( 'ABSPATH', dirname( __FILE__ ) . '/wpbeta' );
+	define( 'ABSPATH', dirname( __FILE__ ) . '/wpbeta/' );
 
 require_once( ABSPATH . 'wp-settings.php' );
