@@ -64,6 +64,14 @@ define( 'WPMU_PLUGIN_DIR', dirname( __FILE__ ) . '/wpmu-plugins' );
 define( 'WPMU_PLUGIN_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wpmu-plugins' );
 /**/
 
+//*
+// One cookie for all sites in network, easy to logged in in each site
+define( 'ADMIN_COOKIE_PATH', '/' );
+define( 'COOKIE_DOMAIN', '' );
+define( 'COOKIEPATH', '' );
+define( 'SITECOOKIEPATH', '' );
+/**/
+
 // Set memory limit
 define( 'WP_MEMORY_LIMIT', '128M' );
 if (
