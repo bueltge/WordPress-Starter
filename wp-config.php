@@ -40,6 +40,11 @@ define( 'WP_PROXY_BYPASS_HOSTS', 'localhost' );
 define( 'FTP_HOST', '' );
 define( 'FTP_USER', 'username123' );
 define( 'FTP_PASS', 'password123' );
+define( 'FTP_SSL', FALSE );
+/**/
+
+/* FTP Method
+define( 'FS_METHOD', 'direct' );
 /**/
 
 //*
