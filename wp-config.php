@@ -120,6 +120,11 @@ define( 'SITE_ID_CURRENT_SITE', 1 );
 define( 'BLOG_ID_CURRENT_SITE', 1 );
 /**/
 
+//*
+// Important for use Multisite Without a Domain Mapping Plugin
+define( 'COOKIE_DOMAIN', FALSE );
+/**/
+
 // Salts, for security
 // Grab these from: https://api.wordpress.org/secret-key/1.1/salt
 define( 'AUTH_KEY',         'put your unique phrase here' );
