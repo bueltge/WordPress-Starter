@@ -121,6 +121,14 @@ define( 'BLOG_ID_CURRENT_SITE', 1 );
 /**/
 
 //*
+// Resolving The WordPress Multisite Redirect Loop
+define( 'ADMIN_COOKIE_PATH', '/' );
+define( 'COOKIE_DOMAIN',     '' );
+define( 'COOKIEPATH',        '' );
+define( 'SITECOOKIEPATH',    '' );
+/**/
+
+//*
 // Important for use Multisite Without a Domain Mapping Plugin
 define( 'COOKIE_DOMAIN', FALSE );
 /**/
