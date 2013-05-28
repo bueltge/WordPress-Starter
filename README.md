@@ -1,5 +1,5 @@
 # WordPress Starter
-This is simple starter skeleton repo for a WordPress developer site - reduce the `wp-config.php` for live sites.
+This is simple starter skeleton repo for a WordPress developer and live site - reduce the `wp-config.php` for live sites. The `.htaccess` is optimized for performance and security topics.
 
 ## Description
 * `wpbeta` as default name for the wp-directory; because i use the last nightly build for development

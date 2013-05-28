@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------
+i!# ----------------------------------------------------------------------
 # BEGIN WordPress
 # ----------------------------------------------------------------------
 <IfModule mod_rewrite.c>
@@ -455,3 +455,29 @@ Options -MultiViews
   Deny from all
   Satisfy all
 </Files>
+
+# PROTECT xmlrpc.php
+#<Files xmlrpc.php>
+#  Order Allow,Deny
+#  Deny from all
+#</Files>
+
+# ACCESS for xmlrpc surface only for different apps
+<IfModule mod_setenvif.c>
+  <Files xmlrpc.php>
+    # blogs
+    BrowserMatch "WordPress" allowed
+    # poster
+    BrowserMatch "Poster" allowed
+    # Windows Livew Writer
+    BrowserMatch "Windows Live Writer" allowed
+    # WP 4 iOS
+    BrowserMatch "wp-iphone" allowed
+    # WP 4 Android
+    BrowserMatch "wp-android" allowed
+    
+    Order Allow,Deny
+    Deny from All
+    Allow from env=allowed
+  </Files>
+</IfModule>
