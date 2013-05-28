@@ -69,14 +69,6 @@ define( 'WPMU_PLUGIN_DIR', dirname( __FILE__ ) . '/wpmu-plugins' );
 define( 'WPMU_PLUGIN_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wpmu-plugins' );
 /**/
 
-//*
-// One cookie for all sites in network, easy to logged in in each site
-define( 'ADMIN_COOKIE_PATH', '/' );
-define( 'COOKIE_DOMAIN', '' );
-define( 'COOKIEPATH', '' );
-define( 'SITECOOKIEPATH', '' );
-/**/
-
 // Set memory limit
 define( 'WP_MEMORY_LIMIT', '128M' );
 if (
@@ -97,9 +89,6 @@ define( 'WP_POST_REVISIONS', 3 );
 // Compression for JS and styles
 define( 'CONCATENATE_SCRIPTS', FALSE ); // activate concantenate scripts 
 define( 'COMPRESS_SCRIPTS',    FALSE ); // activate JS compression
-
-// Allow Multisite
-define( 'WP_ALLOW_MULTISITE', TRUE );
 
 /*
 // for enabling/disabling theme/plugin editor
@@ -122,6 +111,9 @@ define( 'DISALLOW_UNFILTERED_HTML', TRUE );
 define( 'ALLOW_UNFILTERED_UPLOADS', TRUE );
 /**/
 
+// Allow Multisite
+define( 'WP_ALLOW_MULTISITE', TRUE );
+
 //*
 // Network setup
 define( 'MULTISITE',            TRUE );
@@ -143,6 +135,19 @@ define( 'AUTH_SALT',        'put your unique phrase here' );
 define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
 define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
 define( 'NONCE_SALT',       'put your unique phrase here' );
+
+//*
+// One cookie for all sites in network, easy to logged in in each site
+define( 'ADMIN_COOKIE_PATH', '/' );
+define( 'COOKIE_DOMAIN', '' );
+define( 'COOKIEPATH', '' );
+define( 'SITECOOKIEPATH', '' );
+/**/
+
+/*
+// Important for use Multisite Without a Domain Mapping Plugin
+define( 'COOKIE_DOMAIN', FALSE );
+/**/
 
 // Table prefix
 // Change this if you have multiple installs in the same database
