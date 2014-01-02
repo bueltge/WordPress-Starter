@@ -57,6 +57,20 @@ define( 'DB_CHARSET',  'utf8' );
 define( 'DB_COLLATE',  '' );
 /**/
 
+/**
+ * WordPress and Site Adress
+ * The WordPress- and the Site-Adress are automatically adopted 
+ *    uring the installation process of WordPress and may be changed in 
+ *    the administrator panel after the installation is completed.
+ * @see http://marketpress.com/2013/wordpress-and-site-adress-explained/
+ */
+/*
+// Home URL of your WordPress.
+define( 'WP_SITEURL', 'http://localhost/wpbeta' );
+// URL to the WordPress root dir.
+define( 'WP_HOME', 'http://localhost/wpbeta' );
+/**/
+
 //*
 // Custom content directory
 define( 'WP_CONTENT_DIR',  dirname( __FILE__ ) . '/wp-content' );
