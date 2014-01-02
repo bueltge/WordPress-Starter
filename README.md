@@ -12,7 +12,7 @@ This is simple starter skeleton repo for a WordPress developer and live site - r
 
 ## Installation
 1. Clone the Starter to your webserver `git clone https://github.com/bueltge/WordPress-Starter.git`
-2. You need to run `git submodule init` and `git submodule update` to pull the WordPress Core
+2. You need to run `git submodule init` and `git submodule update --recursive` to pull the WordPress Core
 3. Change the settings, in particular the database inside the `wp-config.php`
 
 ## Other Notes
