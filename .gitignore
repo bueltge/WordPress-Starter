@@ -2,10 +2,19 @@
 /sql-dump-*.sql
 /adminer*
 /db-sync
-/content/upgrade/
+/wp-content/upgrade/
+
+## PhpStorm IDE
+.idea
+.iws
+workspace.xml
+tasks.xml
+
+## Aptana IDE
 .settings
 *.aptana.*
 .project
+
 .svn
 *.svn
 .DS_Store
