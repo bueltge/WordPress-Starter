@@ -26,3 +26,6 @@ Please let me know if you like the plugin or you hate it or whatever ... Please 
 
 ### Disclaimer
 I'm German and my English might be gruesome here and there. So please be patient with me and let me know of typos or grammatical farts. Thanks
+
+#### Bitdeli Badge for GitHub Analytics
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/bueltge/wordpress-starter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
