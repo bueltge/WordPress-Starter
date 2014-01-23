@@ -128,7 +128,7 @@ define( 'ALLOW_UNFILTERED_UPLOADS', TRUE );
 /*
 // This will disable WordPress internal cron job. Maybe you will replace with
 //     a Hoster cron to reduce the load
-define( ''DISABLE_WP_CRON', TRUE );
+define( DISABLE_WP_CRON', TRUE );
 /**/
 
 // Allow Multisite
