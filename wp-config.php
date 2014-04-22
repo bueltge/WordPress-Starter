@@ -97,8 +97,14 @@ define( 'SAVEQUERIES', TRUE );
 // Skip wp-content when upgrading to a new WordPress version.
 define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', TRUE );
 
+// Disabling WordPress' Automatic Update 
+define( 'AUTOMATIC_UPDATER_DISABLED', FALSE );
+
 // Set revisions
 define( 'WP_POST_REVISIONS', 3 );
+
+// nabling the "Trash" Feature for Media Files
+define( 'MEDIA_TRASH', TRUE );
 
 // Compression for JS and styles
 define( 'CONCATENATE_SCRIPTS', FALSE ); // activate concantenate scripts 
