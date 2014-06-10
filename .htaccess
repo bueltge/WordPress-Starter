@@ -405,15 +405,52 @@ Options -MultiViews
 </FilesMatch>
 
 # ----------------------------------------------------------------------
-# WordPress features
+# WordPress features, rewrites
 # ----------------------------------------------------------------------
 
-# forbid double slashes in all URLs
 <Ifmodule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+  RewriteRule (.+)(#|%23) /$1 [R=301,NE,L]
+
+  # Redirect HTTPS requests to HTTP
+  RewriteCond %{HTTPS} on
+  RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI}
+  
+  # Deny access with invalid or missing referer on log-in attempts
+  RewriteCond %{REQUEST_METHOD} POST
+  # See http://tltech.com/info/referrer-htaccess/
+  RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/wp-login\.php
+  RewriteRule wp-login\.php - [L,R=403]
+  
+  # Deny access with invalid or missing referer on log-in attempts
+  RewriteCond %{REQUEST_METHOD} POST
+  RewriteCond %{HTTP_REFERER} ^$
+  RewriteRule wp-login\.php - [L,R=403]
+
+  RewriteRule ^index\.php$ - [L]
+  
+  # uploaded files
+  RewriteRule ^files/(.+) wp-includes/ms-files.php?file=$1 [L]
+  
+  # forbid double slashes in all URLs
   RewriteCond %{THE_REQUEST} ^[A-Z]+\ /(([^/\ ]+/)*)/+([^\ ]*)
   RewriteRule ^ /%1%3 [L,R=301]
+  
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule ^(wp-(content|admin|includes).*) $1 [L]
+  RewriteRule ^(.*\.php)$ $1 [L]
+  RewriteRule . index.php [L]
+  
+  # add a trailing slash to /wp-admin
+  RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+  
+  # Enumerating author names, see http://wordpress.stackexchange.com/a/130171/73
+  RewriteCond %{QUERY_STRING} author=\d
+  RewriteRule ^ /? [L,R=301]
 </Ifmodule>
 
 # ----------------------------------------------------------------------
