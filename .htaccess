@@ -360,6 +360,18 @@ Options -MultiViews
 
 
 # ----------------------------------------------------------------------
+# Youth media protection
+#  read: http://de.wikipedia.org/wiki/Jugendmedienschutz-Staatsvertrag
+# Prefer:Safe with Apache for rewrite
+#  read: http://tools.ietf.org/html/draft-nottingham-safe-hint-01
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP:prefer} =safe
+    RewriteRule ^ - [F,L]
+</IfModule>
+
+
+# ----------------------------------------------------------------------
 # Custom 404 page
 # ----------------------------------------------------------------------
 
