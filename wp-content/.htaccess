@@ -1,0 +1,6 @@
+# PROTECT all log files
+<Files ~ "*\.(log|txt)$">
+  Order Allow,Deny
+  Deny from all
+  Satisfy All
+</Files>

@@ -475,13 +475,6 @@ Options -MultiViews
   Satisfy All
 </Files>
 
-# PROTECT all log files
-<Files ~ "*\.(log|txt)$">
-  Order Allow,Deny
-  Deny from all
-  Satisfy All
-</Files>
-
 # PROTECT wp-config.php
 <files wp-config.php>
   Order Allow,Deny
