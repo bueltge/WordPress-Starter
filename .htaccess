@@ -77,7 +77,12 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
   </FilesMatch>
 </IfModule>
 
-
+# ----------------------------------------------------------------------
+# Stop search engines from indexing different files
+# ----------------------------------------------------------------------
+<FilesMatch "\.(txt|log|xml|css|js|gz)$">
+  Header set X-Robots-Tag "noindex"
+</FilesMatch>
 
 # ----------------------------------------------------------------------
 # Proper MIME type for all files
