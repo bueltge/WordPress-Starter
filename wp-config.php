@@ -179,10 +179,6 @@ define( 'COOKIE_DOMAIN', FALSE );
 // Change this if you have multiple installs in the same database
 $table_prefix  = 'wpbeta_';
 
-// Language
-// Leave blank for American English
-define ( 'WPLANG', '' );
-
 // Bootstrap WordPress
 if ( ! defined( 'ABSPATH' ) )
 	define( 'ABSPATH', dirname( __FILE__ ) . '/wpbeta/' );
