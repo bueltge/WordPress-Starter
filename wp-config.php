@@ -100,6 +100,17 @@ define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', TRUE );
 // Disabling WordPress' Automatic Update 
 define( 'AUTOMATIC_UPDATER_DISABLED', FALSE );
 
+/**
+ * The WordPress core has three different types of updates:
+ *  + Core development updates, known as the "bleeding edge"
+ *  + Minor core updates, such as maintenance and security releases
+ *  + Major core release updates
+ * Starting with version 3.7, automatic background updates were introduced by default 
+ * for minor core updates releases (generally security updates). 
+ * This default behavior can be overridden
+ */
+define( 'WP_AUTO_UPDATE_CORE', TRUE );
+
 // Set revisions
 define( 'WP_POST_REVISIONS', 3 );
 
