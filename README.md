@@ -17,10 +17,10 @@ This is simple starter skeleton repo for a WordPress developer and live site - r
 
 ## Other Notes
 ### License
-Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
+Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](https://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
 
 ### Contact & Feedback
-The starter skeleton is created by me ([Frank Bültge](http://bueltge.de)) with many different input from other people
+The starter skeleton is created by me ([Frank Bültge](https://bueltge.de)) with many different input from other people
 
 Please let me know if you like the plugin or you hate it or whatever ... Please fork it, add an issue for ideas and bugs.
 
@@ -28,6 +28,3 @@ Please let me know if you like the plugin or you hate it or whatever ... Please 
 I'm German and my English might be gruesome here and there. So please be patient with me and let me know of typos or grammatical farts. Thanks
 
 ***
-
-###### Bitdeli Badge for GitHub Analytics
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/bueltge/wordpress-starter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
