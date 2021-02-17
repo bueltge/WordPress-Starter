@@ -465,6 +465,10 @@ Options -MultiViews
   # add a trailing slash to /wp-admin
   RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
   
+  # Rewrite/Redirect REST API to 404
+  RewriteRule ^wp-json.*$ /404 [R=404,L]
+  Redirect 301 /wp-json /404
+ 
   # Enumerating author names, see http://wordpress.stackexchange.com/a/130171/73
   RewriteCond %{QUERY_STRING} author=\d
   RewriteRule ^ /? [L,R=301]
