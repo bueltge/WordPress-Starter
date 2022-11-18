@@ -2,7 +2,35 @@
 /sql-dump-*.sql
 /adminer*
 /db-sync
-/wp-content/upgrade/
+
+## File-based project format
+*.ipr
+*.iws
+.svn
+*.svn
+
+## Single files
+clover.xml
+*.log
+*.cache
+.DS_Store
+Desktop.ini
+Thumbs.db
+
+## WordPress
+# Ignore everything in the "wp-content" directory, except the "plugins"
+# and "themes" directories.
+/wp-content/*
+!wp-content/plugins
+!wp-content/themes
+
+## Grunt, NPM
+node_modules/
+
+## Composer template
+composer.phar
+!/js/vendor/*
+/vendor/
 
 ## PhpStorm IDE
 .idea
@@ -14,7 +42,3 @@ tasks.xml
 .settings
 *.aptana.*
 .project
-
-.svn
-*.svn
-.DS_Store
