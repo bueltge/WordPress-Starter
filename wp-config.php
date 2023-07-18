@@ -9,7 +9,10 @@ if ( WP_DEBUG ) {
 	define( 'WP_DEBUG_LOG', TRUE ); // leave the debug file in WP_CONTENT_DIR . '/debug.log'
 	define( 'WP_DEBUG_DISPLAY', TRUE );
 	
-	// Debug JS
+ // Development Mode, since WP 6.3
+ define( 'WP_DEVELOPMENT_MODE', 'all' );
+
+	// Debug
 	// When this is defined and set to TRUE the non-minified versions of the Javascripts will be used.
 	define( 'SCRIPT_DEBUG', TRUE );
 	
