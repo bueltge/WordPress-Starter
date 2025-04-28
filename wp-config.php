@@ -120,10 +120,6 @@ define( 'WP_POST_REVISIONS', 3 );
 // nabling the "Trash" Feature for Media Files
 define( 'MEDIA_TRASH', TRUE );
 
-// Compression for JS and styles
-define( 'CONCATENATE_SCRIPTS', FALSE ); // activate concantenate scripts 
-define( 'COMPRESS_SCRIPTS',    FALSE ); // activate JS compression
-
 /*
 // for enabling/disabling theme/plugin editor
 define( 'DISALLOW_FILE_EDIT', TRUE );
