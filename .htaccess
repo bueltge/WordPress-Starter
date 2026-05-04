@@ -1,13 +1,7 @@
 # ----------------------------------------------------------------------
-# BEGIN WordPress
+# BEGIN Rules
+# Apache processes the file from top to bottom!
 # ----------------------------------------------------------------------
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.php [L]
-</IfModule>
 
 
 # ----------------------------------------------------------------------
@@ -21,18 +15,19 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 
 
 # ----------------------------------------------------------------------
-# Better website experience for IE users
+# Directory Listing und Dotfiles
 # ----------------------------------------------------------------------
-# Force the latest IE version, in various cases when it may fall back to IE7 mode
-#  github.com/rails/rails/commit/123eb25#commitcomment-118920
-# Use ChromeFrame if it's installed for a better experience for the poor IE folk
-<IfModule mod_headers.c>
-  Header set X-UA-Compatible "IE=Edge,chrome=1"
-  # mod_headers can't match by content-type, but we don't want to send this header on *everything*...
-  <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
-  Header unset X-UA-Compatible
-  </FilesMatch>
+# "-Indexes" will have Apache block users from browsing folders without a default document
+# Usually you should leave this activated, because you shouldn't allow everybody to surf through
+# every folder on your server (which includes rather private places like CMS system folders).
+<IfModule mod_autoindex.c>
+  Options -Indexes
 </IfModule>
+
+# Block Dotfiles like .git, .env oder .DS_Store 
+<FilesMatch "^\.">
+	Require all denied
+</FilesMatch>
 
 
 # ----------------------------------------------------------------------
@@ -394,27 +389,21 @@ Options -MultiViews
 ## This can only be enabled if used in httpd.conf - It will not work in .htaccess
 # ServerTokens Prod
 
-
-# "-Indexes" will have Apache block users from browsing folders without a default document
-# Usually you should leave this activated, because you shouldn't allow everybody to surf through
-# every folder on your server (which includes rather private places like CMS system folders).
-<IfModule mod_autoindex.c>
-  Options -Indexes
-</IfModule>
-
-
+# ----------------------------------------------------------------------
 # Block access to "hidden" directories whose names begin with a period. This
 # includes directories used by version control systems such as Subversion or Git.
+# ----------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteCond %{SCRIPT_FILENAME} -d
   RewriteCond %{SCRIPT_FILENAME} -f
   RewriteRule "(^|/)\." - [F]
 </IfModule>
 
-
+# ----------------------------------------------------------------------
 # Block access to backup and source files
 # This files may be left by some text/html editors and
 # pose a great security danger, when someone can access them
+# ----------------------------------------------------------------------
 <FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
   Order allow,deny
   Deny from all
@@ -422,13 +411,102 @@ Options -MultiViews
 </FilesMatch>
 
 # ----------------------------------------------------------------------
+# Little more security in WP and htaccess protection
+# ----------------------------------------------------------------------
+# PROTECT all htaccess files
+<Files ~ "^[\._]ht">
+  Order Allow,Deny
+  Deny from all
+  Satisfy All
+</Files>
+
+# ----------------------------------------------------------------------
+# PROTECT wp-config.php and Backup variants
+# ----------------------------------------------------------------------
+<FilesMatch "^wp-config\.(php|php~|save|swp|swo|bak|old|orig|original|tmp)$">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order deny,allow
+		Deny from all
+	</IfModule>
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# PROTECT wp-login.php,  readme/license.html, install.php and xmlrpc.php
+# ----------------------------------------------------------------------
+#<Files wp-login.php>
+#  AuthName "Admin-Bereich"
+#  AuthType Basic
+#  AuthUserFile /www/htdocs/absolute_path/.htusers
+#  require valid-user
+#</Files>
+
+<FilesMatch "^(readme|license)\.(txt|html)$">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+</FilesMatch>
+
+<FilesMatch "^(install|xmlrpc)\.(php)$">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# Block Script-Execution in Uploads
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+	RewriteCond %{REQUEST_URI} ^/wp-content/uploads/.*\.(php[0-9]?|phtml|phar)$ [NC]
+	RewriteRule .* - [F,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Save core files in wp-includes except some TinyMCE files
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+	RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+	RewriteRule ^wp-includes/js/tinymce/langs/.+\.php$ - [F,L]
+	RewriteRule ^wp-includes/theme-compat/ - [F,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Author-Enumeration, block url param ?author=1
+# ----------------------------------------------------------------------
+#<IfModule mod_rewrite.c>
+#	RewriteCond %{QUERY_STRING} (author=\d+) [NC]
+#	RewriteRule .* - [F,L]
+#</IfModule>
+
+# ACCESS for xmlrpc surface only for different apps
+<IfModule mod_setenvif.c>
+  <Files xmlrpc.php>
+    # blogs
+    BrowserMatch "WordPress" allowed
+    # poster
+    BrowserMatch "Poster" allowed
+    # Windows Livew Writer
+    BrowserMatch "Windows Live Writer" allowed
+    # WP 4 iOS
+    BrowserMatch "wp-iphone" allowed
+    # WP 4 Android
+    BrowserMatch "wp-android" allowed
+    
+    Order Allow,Deny
+    Deny from All
+    Allow from env=allowed
+  </Files>
+</IfModule>
+
+# ----------------------------------------------------------------------
 # WordPress features, rewrites
 # ----------------------------------------------------------------------
-
 <Ifmodule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  
+
   RewriteRule (.+)(#|%23) /$1 [R=301,NE,L]
 
   # Redirect HTTPS requests to HTTP
@@ -473,69 +551,3 @@ Options -MultiViews
   RewriteCond %{QUERY_STRING} author=\d
   RewriteRule ^ /? [L,R=301]
 </Ifmodule>
-
-# ----------------------------------------------------------------------
-# Little more security in WP and htaccess protection
-# ----------------------------------------------------------------------
-# PROTECT all htaccess files
-<Files ~ "^[\._]ht">
-  Order Allow,Deny
-  Deny from all
-  Satisfy All
-</Files>
-
-# PROTECT wp-config.php
-<files wp-config.php>
-  Order Allow,Deny
-  Deny from all
-  Satisfy all
-</files>
-
-# PROTECT wp-login.php
-#<files wp-login.php>
-#  AuthName "Admin-Bereich"
-#  AuthType Basic
-#  AuthUserFile /www/htdocs/absolute_path/.htusers
-#  require valid-user
-#</files>
-
-# PROTECT readme.html
-<Files readme.html>
-  Order Allow,Deny
-  Deny from all
-  Satisfy all
-</Files>
-
-# PROTECT install.php
-# Unkomment or change to 'Allow from all' for install of WordPress
-<Files install.php>
-  Order Allow,Deny
-  Deny from all
-  Satisfy all
-</Files>
-
-# PROTECT xmlrpc.php
-#<Files xmlrpc.php>
-#  Order Allow,Deny
-#  Deny from all
-#</Files>
-
-# ACCESS for xmlrpc surface only for different apps
-<IfModule mod_setenvif.c>
-  <Files xmlrpc.php>
-    # blogs
-    BrowserMatch "WordPress" allowed
-    # poster
-    BrowserMatch "Poster" allowed
-    # Windows Livew Writer
-    BrowserMatch "Windows Live Writer" allowed
-    # WP 4 iOS
-    BrowserMatch "wp-iphone" allowed
-    # WP 4 Android
-    BrowserMatch "wp-android" allowed
-    
-    Order Allow,Deny
-    Deny from All
-    Allow from env=allowed
-  </Files>
-</IfModule>
