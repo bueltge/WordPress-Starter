@@ -1,20 +1,20 @@
 <?php
 // For Debug purpose add the url param: ?wp_debug=true
 if ( isset($_GET['wp_debug']) && $_GET['wp_debug'] === 'true')
-	define( 'WP_DEBUG', TRUE );
+	define( 'WP_DEBUG', true );
 else
-	define( 'WP_DEBUG', FALSE );
+	define( 'WP_DEBUG', false );
 
 if ( WP_DEBUG ) {
-	define( 'WP_DEBUG_LOG', TRUE ); // leave the debug file in WP_CONTENT_DIR . '/debug.log'
-	define( 'WP_DEBUG_DISPLAY', TRUE );
+	define( 'WP_DEBUG_LOG', true ); // leave the debug file in WP_CONTENT_DIR . '/debug.log'
+	define( 'WP_DEBUG_DISPLAY', true );
 	
  // Development Mode, since WP 6.3
  define( 'WP_DEVELOPMENT_MODE', 'all' );
 
 	// Debug
-	// When this is defined and set to TRUE the non-minified versions of the Javascripts will be used.
-	define( 'SCRIPT_DEBUG', TRUE );
+	// When this is defined and set to true the non-minified versions of the Javascripts will be used.
+	define( 'SCRIPT_DEBUG', true );
 	
 	@ini_set( 'log_errors', 'On' );
 	@ini_set( 'display_errors', 'On' );
@@ -43,7 +43,7 @@ define( 'WP_PROXY_BYPASS_HOSTS', 'localhost' );
 define( 'FTP_HOST', '' );
 define( 'FTP_USER', 'username123' );
 define( 'FTP_PASS', 'password123' );
-define( 'FTP_SSL', FALSE );
+define( 'FTP_SSL', false );
 /**/
 
 /* FTP Method
@@ -95,13 +95,13 @@ if (
 	@ini_set( 'memory_limit', WP_MEMORY_LIMIT );
 
 // Save queries for read and optimize
-define( 'SAVEQUERIES', TRUE );
+define( 'SAVEQUERIES', true );
 
 // Skip wp-content when upgrading to a new WordPress version.
-define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', TRUE );
+define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
 
 // Disabling WordPress' Automatic Update 
-define( 'AUTOMATIC_UPDATER_DISABLED', FALSE );
+define( 'AUTOMATIC_UPDATER_DISABLED', false );
 
 /**
  * The WordPress core has three different types of updates:
@@ -112,48 +112,51 @@ define( 'AUTOMATIC_UPDATER_DISABLED', FALSE );
  * for minor core updates releases (generally security updates). 
  * This default behavior can be overridden
  */
-define( 'WP_AUTO_UPDATE_CORE', TRUE );
+define( 'WP_AUTO_UPDATE_CORE', true );
 
 // Set revisions
 define( 'WP_POST_REVISIONS', 3 );
 
 // nabling the "Trash" Feature for Media Files
-define( 'MEDIA_TRASH', TRUE );
+define( 'MEDIA_TRASH', true );
+
+// AI-Support, Interfaces
+define('WP_AI_SUPPORT', false);
 
 /*
 // for enabling/disabling theme/plugin editor
-define( 'DISALLOW_FILE_EDIT', TRUE );
+define( 'DISALLOW_FILE_EDIT', true );
 /**/
 
 /*
 // Disallow anything that creates, deletes, or edits core, plugin, or theme files.
 // Files in uploads are excepted.
-define( 'DISALLOW_FILE_MODS', TRUE );
+define( 'DISALLOW_FILE_MODS', true );
 /**/
 
 /*
 // Disallow unfiltered_html for all users, even admins and super admins
-define( 'DISALLOW_UNFILTERED_HTML', TRUE );
+define( 'DISALLOW_UNFILTERED_HTML', true );
 /**/
 
 /*
 // Allow uploads of filtered file types to users with administrator role
-define( 'ALLOW_UNFILTERED_UPLOADS', TRUE );
+define( 'ALLOW_UNFILTERED_UPLOADS', true );
 /**/
 
 /*
 // This will disable WordPress internal cron job. Maybe you will replace with
 //     a Hoster cron to reduce the load
-define( 'DISABLE_WP_CRON', TRUE );
+define( 'DISABLE_WP_CRON', true );
 /**/
 
 // Allow Multisite
-define( 'WP_ALLOW_MULTISITE', TRUE );
+define( 'WP_ALLOW_MULTISITE', true );
 
 //*
 // Network setup
-define( 'MULTISITE',            TRUE );
-define( 'SUBDOMAIN_INSTALL',    FALSE );
+define( 'MULTISITE',            true );
+define( 'SUBDOMAIN_INSTALL',    false );
 $base = '/wpbeta/';
 define( 'DOMAIN_CURRENT_SITE',  'localhost' );
 define( 'PATH_CURRENT_SITE',    '/wpbeta/' );
@@ -182,7 +185,7 @@ define( 'SITECOOKIEPATH', '' );
 
 /*
 // Important for use Multisite Without a Domain Mapping Plugin
-define( 'COOKIE_DOMAIN', FALSE );
+define( 'COOKIE_DOMAIN', false );
 /**/
 
 // Table prefix
